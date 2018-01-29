@@ -13,6 +13,8 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
+    int pricePerCup = 5;
+    int price = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,10 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        displayPrice(quantity * 5);
+        price = pricePerCup * quantity;
+        //displayPrice(price);
+        String priceMessage = "Total: $" + price + "\nThank You!";
+        displayMessage(priceMessage);
     }
 
     /**
@@ -60,4 +65,13 @@ public class MainActivity extends AppCompatActivity {
         }
         display(quantity);
     }
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
+    }
+
 }
